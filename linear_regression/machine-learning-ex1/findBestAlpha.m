@@ -3,7 +3,7 @@ function findBestAlpha(fileName)
 
     data = load(fileName);
 
-    alphas = [10, 3, 1, 0.3, 0.1, 0.03, 0.01, 0.003, 0.001];
+    alphas = [10, 3, 1, 0.3, 0.1, 0.03, 0.01, 0.003, 0.001]; % Potential alpha values to check
 
     X_ = [ones(size(data, 1), 1), data(:, 1:end - 1)]; % Add a column of ones to x
     X =  featureNormalize(X_); % Normalize features
@@ -12,8 +12,7 @@ function findBestAlpha(fileName)
     % Some gradient descent settings
     iterations = 200;
 
-    for iter = 1:length(alphas)
-        alpha = alphas(iter);
+    for alpha = alphas
         fprintf('Running gradient descent for alpha = %f\n', alpha);
         theta = zeros(size(X, 2), 1); % initialize fitting parameters
 
