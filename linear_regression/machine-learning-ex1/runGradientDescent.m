@@ -9,21 +9,9 @@ function runGradientDescent(fileName)
 
     % Some gradient descent settings
     iterations = 1500;
-    alpha = 0.01;
+    alpha = 0.1;
 
     [theta, J_history] = gradientDescent(X, y, theta, alpha, iterations);
-
-    if size(X, 2) == 2
-      % Plot Data
-      plotData(X(:, 2), y);
-      range = xlim()(1) : 0.1 : xlim()(2);
-      hold on;
-      plot(range, [ones(length(range), 1), range'] * theta);
-      theta_2 = normalEqn(X, y);
-      disp(theta);
-      disp(theta_2);
-      plot(range, [ones(length(range), 1), range'] * theta_2);
-    end
 
     figure;
     plot(J_history);
