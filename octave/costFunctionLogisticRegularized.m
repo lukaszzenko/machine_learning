@@ -7,7 +7,7 @@ function [J, grad] = costFunctionLogisticRegularized(theta, X, y, lambda)
     m = length(y); % number of training examples
 
     h = sigmoid(X * theta);
-    J = (-y' * log(h) - (1 - y)' * log (1 - h)) / m + sumsq(replaceFirst(theta)) * lambda / (2 * m) ;
+    J = (-y' * log(h) - (1 - y)' * log (1 - h)) / m + lambda * sumsq(replaceFirst(theta)) / (2 * m) ;
     grad = X' * (h - y) / m + replaceFirst(theta) * lambda / m;
 
 end
