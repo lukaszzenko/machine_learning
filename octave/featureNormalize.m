@@ -5,9 +5,9 @@ function [X_norm, mu, sigma] = featureNormalize(X)
     %   is 1. This is often a good preprocessing step to do when
     %   working with learning algorithms.
 
-    % Compute the mean for each feature and subtract it from the dataset
-    mu = mean(X);
-    mu(1) = 0;  % Leave ones in the first column untouched
+    % Compute the mean for each feature and subtract it from the dataset.
+    % Replace first value with 0 to leave ones in the first column untouched
+    mu = replaceFirst(mean(X));
     X_norm = X - mu;
 
     % Compute the standard deviation of each feature and divide each feature by it's standard deviation

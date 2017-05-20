@@ -1,13 +1,10 @@
 function findBestAlpha(fileName)
     graphics_toolkit('gnuplot');
 
-    data = load(fileName);
-
     alphas = [10, 3, 1, 0.3, 0.1, 0.03, 0.01, 0.003, 0.001]; % Potential alpha values to check
 
-    X_ = [ones(size(data, 1), 1), data(:, 1:end - 1)]; % Add a column of ones to x
-    X =  featureNormalize(X_); % Normalize features
-    y = data(:, end:end);
+    [X_orig, y] = readDataToMatrix(fileName);
+    [X, mu, sigma] = featureNormalize(X_orig); % Normalize features
 
     % Some gradient descent settings
     iterations = 200;
@@ -16,10 +13,9 @@ function findBestAlpha(fileName)
         fprintf('Running gradient descent for alpha = %f\n', alpha);
         theta = zeros(size(X, 2), 1); % initialize fitting parameters
 
-        [theta, J_history] = gradientDescent(X, y, theta, alpha, iterations);
+        [theta, J_history] = gradientDescent(theta, alpha, iterations, @(th) costFunctionLinear(th, X, y));
 
-        figure;
-        plot(J_history);
+        plotCostHistory(J_history(2:end));
         fprintf('Click anything to continue...\n')
         pause;
     end
