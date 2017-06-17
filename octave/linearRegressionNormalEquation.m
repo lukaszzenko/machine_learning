@@ -1,5 +1,5 @@
 function [predict] = linearRegressionNormalEquation(fileName)
-    [X, y] = readDataToMatrix(fileName);
+    [X, y] = readXyFromFile(fileName);
 
     theta = normalEquation(X, y); % initialize fitting parameters
 

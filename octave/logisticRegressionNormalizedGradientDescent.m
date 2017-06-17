@@ -1,5 +1,5 @@
 function [predict] = logisticRegressionNormalizedGradientDescent(fileName)
-    [X_orig, y] = readDataToMatrix(fileName);
+    [X_orig, y] = readXyFromFile(fileName);
 
     if (size(X_orig, 2) == 3)
         plotBinaryClassified2Dim(X_orig(:, 2:end), y);

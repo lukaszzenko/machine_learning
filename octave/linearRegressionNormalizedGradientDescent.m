@@ -1,5 +1,5 @@
 function [predict] = linearRegressionNormalizedGradientDescent(fileName)
-    [X_orig, y] = readDataToMatrix(fileName);
+    [X_orig, y] = readXyFromFile(fileName);
     [X, mu, sigma] = featureNormalize(X_orig); % Normalize features
 
     theta = zeros(size(X, 2), 1); % initialize fitting parameters

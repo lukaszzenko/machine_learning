@@ -1,9 +1,9 @@
-function findBestAlpha(fileName)
+function findBestAlphaForGradientDescent(fileName)
     graphics_toolkit('gnuplot');
 
     alphas = [10, 3, 1, 0.3, 0.1, 0.03, 0.01, 0.003, 0.001]; % Potential alpha values to check
 
-    [X_orig, y] = readDataToMatrix(fileName);
+    [X_orig, y] = readXyFromFile(fileName);
     [X, mu, sigma] = featureNormalize(X_orig); % Normalize features
 
     % Some gradient descent settings

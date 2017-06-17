@@ -1,5 +1,5 @@
 function [predict] = linearRegressionFminunc(fileName)
-    [X, y] = readDataToMatrix(fileName);
+    [X, y] = readXyFromFile(fileName);
 
     % Set options for fminunc
     options = optimset('GradObj', 'on', 'MaxIter', 400);
