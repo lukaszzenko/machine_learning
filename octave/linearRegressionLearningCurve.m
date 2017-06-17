@@ -1,4 +1,4 @@
-function [predict] = linearRegressionLearningCurve(fileName)
+function linearRegressionLearningCurve(fileName)
     [X, y, Xval, yval] = readTrainValTestDataFromFile(fileName);
 
     % Set options for fminunc
